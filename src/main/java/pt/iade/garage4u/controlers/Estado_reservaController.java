@@ -33,7 +33,7 @@ public class Estado_reservaController {
     public Estado_reserva getEstado_reserva(@PathVariable int id) {
         logger.info("Sending estado_reserva with id " + id);
         Optional<Estado_reserva> _estado_reserva = estado_reservaRepository.findById(id);
-        if (_estado_reserva.isEmpty())
+        if (!_estado_reserva.isPresent())
             throw new NotFoundException("" + id, "Estado_reserva", "id");
         else
             return _estado_reserva.get();

@@ -32,7 +32,7 @@ public class ZonaController {
     public Zona getZona(@PathVariable int id) {
         logger.info("Sending zona with id " + id);
         Optional<Zona> _zona = zonaRepository.findById(id);
-        if (_zona.isEmpty())
+        if (!_zona.isPresent())
             throw new NotFoundException("" + id, "Zona", "id");
         else
             return _zona.get();

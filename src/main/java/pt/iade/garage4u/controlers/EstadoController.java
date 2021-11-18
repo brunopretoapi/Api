@@ -34,7 +34,7 @@ public class EstadoController {
     public Estado getEstado(@PathVariable int id) {
         logger.info("Sending estado with id " + id);
         Optional<Estado> _estado = estadoRepository.findById(id);
-        if (_estado.isEmpty())
+        if (!_estado.isPresent())
             throw new NotFoundException("" + id, "Estado", "id");
         else
             return _estado.get();

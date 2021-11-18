@@ -33,7 +33,7 @@ public class Res_garController {
     public Res_gar getRes_gar(@PathVariable int id) {
         logger.info("Sending res_gar with id " + id);
         Optional<Res_gar> _res_gar = res_garRepository.findById(id);
-        if (_res_gar.isEmpty())
+        if (!_res_gar.isPresent())
             throw new NotFoundException("" + id, "Res_gar", "id");
         else
             return _res_gar.get();

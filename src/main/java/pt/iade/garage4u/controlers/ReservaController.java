@@ -32,7 +32,7 @@ public class ReservaController {
     public Reserva getReserva(@PathVariable int id) {
         logger.info("Sending reserva with id " + id);
         Optional<Reserva> _reserva = reservaRepository.findById(id);
-        if (_reserva.isEmpty())
+        if (!_reserva.isPresent())
             throw new NotFoundException("" + id, "reserva", "id");
         else
             return _reserva.get();

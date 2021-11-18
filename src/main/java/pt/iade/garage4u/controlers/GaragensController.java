@@ -31,7 +31,7 @@ public class GaragensController {
     public Garagens getGaragens(@PathVariable int id) {
         logger.info("Sending garagens with id " + id);
         Optional<Garagens> _garagens = garagensRepository.findById(id);
-        if (_garagens.isEmpty())
+        if (!_garagens.isPresent())
             throw new NotFoundException("" + id, "Garagens", "id");
         else
             return _garagens.get();

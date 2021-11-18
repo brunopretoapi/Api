@@ -32,7 +32,7 @@ public class RateController {
     public Rate getRate(@PathVariable int id) {
         logger.info("Sending rate with id " + id);
         Optional<Rate> _rate = rateRepository.findById(id);
-        if (_rate.isEmpty())
+        if (!_rate.isPresent())
             throw new NotFoundException("" + id, "Rate", "id");
         else
             return _rate.get();
