@@ -8,10 +8,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "estado")
 public class Estado {
+    @Id
     @Column(name = "id_estado", nullable = false)
     private Integer id_estado;
 
-    @Id
+
     @Column(name = "estado", nullable = false, length = 30)
     private String estado;
 
