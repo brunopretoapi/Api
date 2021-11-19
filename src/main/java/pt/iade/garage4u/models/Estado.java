@@ -9,14 +9,14 @@ import javax.persistence.Table;
 @Table(name = "estado")
 public class Estado {
     @Column(name = "id_estado", nullable = false)
-    private Integer id;
+    private Integer id_estado;
 
     @Id
     @Column(name = "estado", nullable = false, length = 30)
     private String estado;
 
     public int getEstadoId() {
-        return id;
+        return id_estado;
     }
 
 
