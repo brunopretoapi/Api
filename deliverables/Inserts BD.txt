@@ -1,0 +1,103 @@
+--zona:
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (1, 'pontinha', 1234);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (2, 'sesimbra', 543);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (3, 'tomar', 873);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (4, 'aveiro', 365);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (5, 'barreiro', 335);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (6, 'cotovia', 297);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (7, 'meco', 208);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (8, 'Setubal', 334);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (9, 'porto', 455);
+INSERT INTO zona (id_zona, nome_zona, cod_zona) VALUES (10, 'Gaia', 367);
+
+
+--utilizador
+INSERT INTO utilizador (utilizador_id, utilizador_name, utilizador_morada, utilizador_gender, utilizador_bdate, utilizador_identificacao_id, utilizador_email, utilizador_pass) VALUES (1, 'Bruno Preto', 'Rua das flores', 'm', '1998-09-05', 12468664, 'brunomarcospreto1998@gmail.com', '123456789');
+
+INSERT INTO utilizador (utilizador_id, utilizador_name, utilizador_morada, utilizador_gender, utilizador_bdate, utilizador_identificacao_id, utilizador_email, utilizador_pass) VALUES (2, 'Bruno Mata', 'Rua Casal Quartilho ', 'm', '1997-09-24', 54645646, 'brunomata@garage4u.pt', '134679258');
+
+INSERT INTO utilizador (utilizador_id, utilizador_name, utilizador_morada, utilizador_gender, utilizador_bdate, utilizador_identificacao_id, utilizador_email, utilizador_pass) VALUES (3, 'Joao Garcia', 'rua da perdida', 'm', '2000-11-11', 32143523, 'joaogarcia@email.pt', '434577665');
+
+
+INSERT INTO utilizador (utilizador_id, utilizador_name, utilizador_morada, utilizador_gender, utilizador_bdate, utilizador_identificacao_id, utilizador_email, utilizador_pass) VALUES (4, 'Joao Carvalho', 'restelo', 'm', '1998-10-13', 35671567, 'joaobcarvalho@gmail.com', '123456789');
+
+INSERT INTO utilizador (utilizador_id, utilizador_name, utilizador_morada, utilizador_gender, utilizador_bdate, utilizador_identificacao_id, utilizador_email, utilizador_pass) VALUES (5, 'Pedro Santos', 'Sintra', 'm', '1998-07-17', 53671567, 'pedrosantos@gmail.com', '123456789');
+
+INSERT INTO utilizador (utilizador_id, utilizador_name, utilizador_morada, utilizador_gender, utilizador_bdate, utilizador_identificacao_id, utilizador_email, utilizador_pass) VALUES (6, 'Duarte Correia', 'Odivelas', 'm', '1998-05-01', 15677526, 'duartecorreia@gmail.com', '123456789');
+
+
+--Garagens:
+INSERT INTO garagens (garagens_id, localizacao, id_propriatario, id_estado, id_zona) VALUES (1, '145,151,415', 1, 1, 6);
+
+INSERT INTO garagens (garagens_id, localizacao, id_propriatario, id_estado, id_zona) VALUES (2, '332,143,166', 2, 1, 7);
+
+INSERT INTO garagens (garagens_id, localizacao, id_propriatario, id_estado, id_zona) VALUES (3, '412,113,123', 4, 1, 8);
+
+INSERT INTO garagens (garagens_id, localizacao, id_propriatario, id_estado, id_zona) VALUES (4, '445,612,126', 5, 1, 9);
+
+INSERT INTO garagens (garagens_id, localizacao, id_propriatario, id_estado, id_zona) VALUES (5, '978,302,104', 6, 1, 10);
+
+
+--reserva:
+INSERT INTO reserva (reservas_id, id_utilizador, hora_de_entrda, hora_saida) VALUES (1, 2, '2021-11-04 09:00:00.000000', '2021-11-04 10:00:00.000000');
+
+INSERT INTO reserva (reservas_id, id_utilizador, hora_de_entrda, hora_saida) VALUES (2, 1, '2021-08-04 09:00:00.000000', '2021-08-04 10:00:00.000000');
+
+INSERT INTO reserva (reservas_id, id_utilizador, hora_de_entrda, hora_saida) VALUES (3, 3, '2021-02-01 10:13:21.000000', '2021-02-01 11:00:00.000000');
+
+INSERT INTO reserva (reservas_id, id_utilizador, hora_de_entrda, hora_saida) VALUES (4, 4, '2021-03-03 13:00:00.000000', '2021-03-03 14:00:00.000000');
+
+INSERT INTO reserva (reservas_id, id_utilizador, hora_de_entrda, hora_saida) VALUES (5, 5, '2021-04-22 17:00:00.000000', '2021-04-22 18:00:00.000000');
+
+INSERT INTO reserva (reservas_id, id_utilizador, hora_de_entrda, hora_saida) VALUES (6, 6, '2021-12-19 18:00:00.000000', '2021-12-19 19:00:00.000000');
+
+
+
+--Estado:
+INSERT INTO estado (id_estado, estado) VALUES (1, 'livre');
+INSERT INTO estado (id_estado, estado) VALUES (2, 'ocupado');
+INSERT INTO estado (id_estado, estado) VALUES (3, 'pendente');
+
+
+--Reserva_Garagem:
+INSERT INTO res_gar (res_gar_id, reservas_id, garagens_id) VALUES (1, 1, 3);
+
+INSERT INTO res_gar (res_gar_id, reservas_id, garagens_id) VALUES (2, 2, 4);
+
+INSERT INTO res_gar (res_gar_id, reservas_id, garagens_id) VALUES (3, 3, 5);
+
+INSERT INTO res_gar (res_gar_id, reservas_id, garagens_id) VALUES (4, 4, 6);
+
+INSERT INTO res_gar (res_gar_id, reservas_id, garagens_id) VALUES (5, 5, 1);
+
+INSERT INTO res_gar (res_gar_id, reservas_id, garagens_id) VALUES (6, 6, 2);
+
+
+--Estado_reserva:
+
+INSERT INTO estado_reserva (estado_reserva_id,id_reserva, id_estado, hora_de_entrda, hora_saida) VALUES (1,1, 1, '2021-11-11 09:05:42.000000', '2021-11-04 12:32:28.000000');
+
+INSERT INTO estado_reserva (estado_reserva_id,id_reserva, id_estado, hora_de_entrda, hora_saida) VALUES (2,2, 1, '2021-08-04 09:13:20.000000', '2021-08-04 10:13:20.000000');
+
+INSERT INTO estado_reserva (estado_reserva_id,id_reserva, id_estado, hora_de_entrda, hora_saida) VALUES (3,3, 2, '2021-02-01 10:13:21.000000', '2021-02-01 11:13:21.000000');
+
+INSERT INTO estado_reserva (estado_reserva_id,id_reserva, id_estado, hora_de_entrda, hora_saida) VALUES (4,4, 1, '2021-03-03 13:12:13.000000', '2021-03-03 14:12:13.000000');
+
+INSERT INTO estado_reserva (estado_reserva_id,id_reserva, id_estado, hora_de_entrda, hora_saida) VALUES (5,5, 3, '2021-04-22 17:09:44.000000', '2021-04-22 19:09:44.000000');
+
+INSERT INTO estado_reserva (estado_reserva_id,id_reserva, id_estado, hora_de_entrda, hora_saida) VALUES (6,6, 1, '2021-12-19 18:09:44.000000', '2021-12-22 19:09:44.000000');
+
+
+--Rate:
+
+INSERT INTO rate (rate_id, id_garagem, id_utilizador, rate) VALUES (1, 3, 2, 1);
+
+INSERT INTO rate (rate_id, id_garagem, id_utilizador, rate) VALUES (2, 3, 1, 3);
+
+INSERT INTO rate (rate_id, id_garagem, id_utilizador, rate) VALUES (3, 5, 3, 4);
+
+INSERT INTO rate (rate_id, id_garagem, id_utilizador, rate) VALUES (4, 4, 4, 2);
+
+INSERT INTO rate (rate_id, id_garagem, id_utilizador, rate) VALUES (5, 9, 5, 5);
+
+INSERT INTO rate (rate_id, id_garagem, id_utilizador, rate) VALUES (6, 8, 6, 2);
