@@ -5,44 +5,60 @@ import javax.persistence.*;
 @Entity
 @Table(name = "garagens")
 public class Garagens {
+
+    //lampada
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "garagens_id", nullable = false)
     private Integer id;
 
-    @Column(name = "localizacao", length = 30)
+    @Column(name = "localizacao", nullable = false, length = 30)
     private String localizacao;
 
-    @Column(name = "id_propriatario")
-    private Integer idPropriatario;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_propriatario", nullable = false)
+    private Utilizador idPropriatario;
 
-    @Column(name = "id_estado")
-    private Integer idEstado;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_estado", nullable = false)
+    private Estado idEstado;
 
-    @Column(name = "id_zona")
-    private Integer idZona;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_zona", nullable = false)
+    private Zona idZona;
 
-    public Integer getIdZona() {
+    @Column(name = "lampada", nullable = false)
+    private Boolean lampada = false;
+
+    public Boolean getLampada() {
+        return lampada;
+    }
+
+    public void setLampada(Boolean lampada) {
+        this.lampada = lampada;
+    }
+
+    public Zona getIdZona() {
         return idZona;
     }
 
-    public void setIdZona(Integer idZona) {
+    public void setIdZona(Zona idZona) {
         this.idZona = idZona;
     }
 
-    public Integer getIdEstado() {
+    public Estado getIdEstado() {
         return idEstado;
     }
 
-    public void setIdEstado(Integer idEstado) {
+    public void setIdEstado(Estado idEstado) {
         this.idEstado = idEstado;
     }
 
-    public Integer getIdPropriatario() {
+    public Utilizador getIdPropriatario() {
         return idPropriatario;
     }
 
-    public void setIdPropriatario(Integer idPropriatario) {
+    public void setIdPropriatario(Utilizador idPropriatario) {
         this.idPropriatario = idPropriatario;
     }
 

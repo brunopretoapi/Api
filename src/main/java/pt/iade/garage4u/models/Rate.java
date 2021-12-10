@@ -5,16 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "rate")
 public class Rate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rate_id", nullable = false)
     private Integer id;
 
-    @Column(name = "id_garagem", nullable = false)
-    private Integer idGaragem;
-
-    @Column(name = "id_utilizador", nullable = false)
-    private Integer idUtilizador;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_res_gar", nullable = false)
+    private Res_gar idResGar;
 
     @Column(name = "rate")
     private Integer rate;
@@ -27,20 +26,12 @@ public class Rate {
         this.rate = rate;
     }
 
-    public Integer getIdUtilizador() {
-        return idUtilizador;
+    public Res_gar getIdResGar() {
+        return idResGar;
     }
 
-    public void setIdUtilizador(Integer idUtilizador) {
-        this.idUtilizador = idUtilizador;
-    }
-
-    public Integer getIdGaragem() {
-        return idGaragem;
-    }
-
-    public void setIdGaragem(Integer idGaragem) {
-        this.idGaragem = idGaragem;
+    public void setIdResGar(Res_gar idResGar) {
+        this.idResGar = idResGar;
     }
 
     public Integer getRateId() {

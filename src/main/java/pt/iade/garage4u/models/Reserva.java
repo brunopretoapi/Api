@@ -6,13 +6,15 @@ import java.time.Instant;
 @Entity
 @Table(name = "reserva")
 public class Reserva {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "reservas_id", nullable = false)
     private Integer id;
 
-    @Column(name = "id_utilizador", nullable = false)
-    private Integer idUtilizador;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_utilizador", nullable = false)
+    private Utilizador idUtilizador;
 
     @Column(name = "hora_de_entrda", nullable = false)
     private Instant horaDeEntrda;
@@ -36,11 +38,11 @@ public class Reserva {
         this.horaDeEntrda = horaDeEntrda;
     }
 
-    public Integer getIdUtilizador() {
+    public Utilizador getIdUtilizador() {
         return idUtilizador;
     }
 
-    public void setIdUtilizador(Integer idUtilizador) {
+    public void setIdUtilizador(Utilizador idUtilizador) {
         this.idUtilizador = idUtilizador;
     }
 

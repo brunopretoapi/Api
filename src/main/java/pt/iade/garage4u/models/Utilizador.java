@@ -1,15 +1,17 @@
 package pt.iade.garage4u.models;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "utilizador")
 public class Utilizador {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "utilizador_id", nullable = false)
-    private int utilizadorId;
+    private Integer utilizadorId;
 
     @Column(name = "utilizador_name", nullable = false, length = 60)
     private String utilizadorName;
@@ -23,14 +25,58 @@ public class Utilizador {
     @Column(name = "utilizador_bdate", nullable = false)
     private LocalDate utilizadorBdate;
 
-    @Column(name = "utilizador_identificacao_id")
+    @Column(name = "utilizador_identificacao_id", nullable = false)
     private Integer utilizadorIdentificacaoId;
 
-    @Column(name = "utilizador_email", length = 30)
+    @Column(name = "utilizador_email", nullable = false, length = 30)
     private String utilizadorEmail;
 
-    @Column(name = "utilizador_pass", length = 30)
+    @Column(name = "utilizador_pass", nullable = false, length = 30)
     private String utilizadorPass;
+
+    @Column(name = "quantidade_dinheiro", nullable = false)
+    private BigDecimal quantidadeDinheiro;
+
+    @Column(name = "num_cartao", nullable = false)
+    private Integer numCartao;
+
+    @Column(name = "cvv", nullable = false)
+    private Integer cvv;
+
+    @Column(name = "nome_cartao", nullable = false, length = 30)
+    private String nomeCartao;
+
+    public String getNomeCartao() {
+        return nomeCartao;
+    }
+
+    public void setNomeCartao(String nomeCartao) {
+        this.nomeCartao = nomeCartao;
+    }
+
+    public Integer getCvv() {
+        return cvv;
+    }
+
+    public void setCvv(Integer cvv) {
+        this.cvv = cvv;
+    }
+
+    public Integer getNumCartao() {
+        return numCartao;
+    }
+
+    public void setNumCartao(Integer numCartao) {
+        this.numCartao = numCartao;
+    }
+
+    public BigDecimal getQuantidadeDinheiro() {
+        return quantidadeDinheiro;
+    }
+
+    public void setQuantidadeDinheiro(BigDecimal quantidadeDinheiro) {
+        this.quantidadeDinheiro = quantidadeDinheiro;
+    }
 
     public String getUtilizadorPass() {
         return utilizadorPass;
@@ -88,7 +134,7 @@ public class Utilizador {
         this.utilizadorName = utilizadorName;
     }
 
-    public Integer getUtilizadorId() {
+    public Integer getUtilizadorID() {
         return utilizadorId;
     }
 
@@ -96,3 +142,6 @@ public class Utilizador {
         this.utilizadorId = id;
     }
 }
+
+
+

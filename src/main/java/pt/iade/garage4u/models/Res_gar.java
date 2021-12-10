@@ -5,31 +5,34 @@ import javax.persistence.*;
 @Entity
 @Table(name = "res_gar")
 public class Res_gar {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "res_gar_id", nullable = false)
     private Integer id;
 
-    @Column(name = "reservas_id", nullable = false)
-    private Integer reservasId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "reservas_id", nullable = false)
+    private Reserva reservas;
 
-    @Column(name = "garagens_id", nullable = false)
-    private Integer garagensId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "garagens_id", nullable = false)
+    private Garagens garagens;
 
-    public Integer getGaragensId() {
-        return garagensId;
+    public Garagens getGaragens() {
+        return garagens;
     }
 
-    public void setGaragensId(Integer garagensId) {
-        this.garagensId = garagensId;
+    public void setGaragens(Garagens garagens) {
+        this.garagens = garagens;
     }
 
-    public Integer getReservasId() {
-        return reservasId;
+    public Reserva getReservas() {
+        return reservas;
     }
 
-    public void setReservasId(Integer reservasId) {
-        this.reservasId = reservasId;
+    public void setReservas(Reserva reservas) {
+        this.reservas = reservas;
     }
 
     public Integer getRes_garId() {

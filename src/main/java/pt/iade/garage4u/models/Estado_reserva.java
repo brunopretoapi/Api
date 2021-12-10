@@ -12,11 +12,13 @@ public class Estado_reserva {
     @Column(name = "estado_reserva_id", nullable = false)
     private Integer id;
 
-    @Column(name = "id_reserva", nullable = false)
-    private Integer idReserva;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_reserva", nullable = false)
+    private Reserva idReserva;
 
-    @Column(name = "id_estado")
-    private Integer idEstado;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "id_estado", nullable = false)
+    private Estado idEstado;
 
     @Column(name = "hora_de_entrda", nullable = false)
     private Instant horaDeEntrda;
@@ -40,19 +42,19 @@ public class Estado_reserva {
         this.horaDeEntrda = horaDeEntrda;
     }
 
-    public Integer getIdEstado() {
+    public Estado getIdEstado() {
         return idEstado;
     }
 
-    public void setIdEstado(Integer idEstado) {
+    public void setIdEstado(Estado idEstado) {
         this.idEstado = idEstado;
     }
 
-    public Integer getIdReserva() {
+    public Reserva getIdReserva() {
         return idReserva;
     }
 
-    public void setIdReserva(Integer idReserva) {
+    public void setIdReserva(Reserva idReserva) {
         this.idReserva = idReserva;
     }
 

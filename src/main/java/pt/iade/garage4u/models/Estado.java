@@ -1,25 +1,32 @@
 package pt.iade.garage4u.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "estado")
 public class Estado {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_estado", nullable = false)
-    private Integer id_estado;
+    private Integer id;
 
-
-    @Column(name = "estado", nullable = false, length = 30)
+    @Column(name = "estado", length = 30)
     private String estado;
 
-    public int getEstadoId() {
-        return id_estado;
+    public String getEstado() {
+        return estado;
     }
 
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 
+    public Integer getEstadoId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
