@@ -17,16 +17,16 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     @Query(value = "select utilizador_existe(:nome,:pass)", nativeQuery = true)
     Iterable<String> Exite_utilizador(String nome, String pass);
 
-    Optional<Utilizador> findByUtilizadorId(int id);
+    @Query(value = "select depositar(:utilizador, :num_card, :cvv, :quantidade_dinheiro)", nativeQuery = true)
+    Iterable<String> deposita(String utilizador, int num_card, int cvv, int quantidade_dinheiro);
 
-    @Query(value = "select * from utilizador where utilizador_id = :id", nativeQuery = true)
-    Iterable<Utilizador> teste(int id);
+    @Query(value = "select levantar(:utilizador, :num_card, :cvv, :quantidade_dinheiro)", nativeQuery = true)
+    Iterable<String> levanta(String utilizador, int num_card, int cvv, int quantidade_dinheiro);
 
-    @Query(value = "select * from utilizador", nativeQuery = true)
-    Iterable<Utilizador> teste2();
 
-    @Query(value = "select utilizador_nome from utilizador where utilizador_id = :id", nativeQuery = true)
-    Iterable<String> teste3(int id);
+
+
+
 
     /*@Query(value = "select rt_bio from routes where rt_id = :id", nativeQuery = true)
     Iterable<String> findRtBioById(int id);

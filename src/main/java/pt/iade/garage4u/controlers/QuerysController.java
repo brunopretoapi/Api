@@ -20,32 +20,29 @@ public class QuerysController {
     @Autowired
     private QueryRepository queryRepository;
 
-    @GetMapping(path = "/teste/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Optional<Utilizador> getteste(@PathVariable int id) {
-        logger.info("Sending bio from route id:" + id);
-        return queryRepository.findByUtilizadorId(id);
-    }
-
-    @GetMapping(path = "/teste3/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> getteste1(@PathVariable int id) {
-        logger.info("Sending bio from route id:" + id);
-        return queryRepository.teste3(id);
-
-    }
-
-
-
-    @GetMapping(path = "/teste2/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Utilizador> getexit_userBypass_nome2() {
-        logger.info("Sending bio from route nome::");
-        return queryRepository.teste2();
-    }
-
-    @GetMapping(path = "/exite/{nome:[0-z]+}/{pass:[0-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/exite/{nome:[.-z]+}/{pass:[0-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> getexit_userBypass_nome(@PathVariable("nome") String nome,@PathVariable("pass") String pass) {
         logger.info("Sending bio from route nome: ,pass:" + nome +pass);
         return queryRepository.Exite_utilizador(nome,pass);
     }
+
+    @GetMapping(path = "/banco/depositar/{utilizador:[A-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getdepositar(@PathVariable("utilizador") String utilizador,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
+        logger.info("Sending bio from route utilizador: ,num_card:,cvv:,quantidade_dinheiro:" + utilizador +num_card+cvv+quantidade_dinheiro);
+        return queryRepository.deposita(utilizador ,num_card,cvv,quantidade_dinheiro);
+    }
+
+    @GetMapping(path = "/banco/levantar/{utilizador:[A-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getlevantar(@PathVariable("utilizador") String utilizador,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
+        logger.info("Sending bio from route utilizador: ,num_card:,cvv:,quantidade_dinheiro:" + utilizador +num_card+cvv+quantidade_dinheiro);
+        return queryRepository.levanta(utilizador ,num_card,cvv,quantidade_dinheiro);
+    }
+
+
+
+
+
+
 
 }
 
