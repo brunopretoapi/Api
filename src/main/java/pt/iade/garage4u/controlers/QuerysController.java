@@ -30,6 +30,7 @@ public class QuerysController {
     public Iterable<String> getteste1(@PathVariable int id) {
         logger.info("Sending bio from route id:" + id);
         return queryRepository.teste3(id);
+
     }
 
 
