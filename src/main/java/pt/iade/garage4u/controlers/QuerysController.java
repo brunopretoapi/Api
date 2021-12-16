@@ -65,7 +65,7 @@ public class QuerysController {
         logger.info("Sending bio from route utilizador_email:,utilizador_pass:,garagem_localizacao:,garagem_zona:,garagem_zona_cod:,garagem_lampada:" + utilizador_email+utilizador_pass+garagem_localizacao+garagem_zona+garagem_zona_cod+garagem_lampada);
         return queryRepository.add_garagens(utilizador_email,utilizador_pass,garagem_localizacao,garagem_zona,garagem_zona_cod,garagem_lampada);
     }
-
+  
      */
 
 
