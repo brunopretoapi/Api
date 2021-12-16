@@ -24,7 +24,7 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     Iterable<String> utilizador_reserva(String nome, String pass);
 
     @Query(value = "select * from utilizador where utilizador_email = :nome and utilizador_pass = :pass", nativeQuery = true)
-    Iterable<String> utilizador_info(String nome, String pass);
+    Iterable<Utilizador> utilizador_info(String nome, String pass);
 
     @Query(value = "select * from garagens where garagens_id = :id", nativeQuery = true)
     Iterable<String> garagens_info(int id);

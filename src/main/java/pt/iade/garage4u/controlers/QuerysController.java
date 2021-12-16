@@ -28,8 +28,10 @@ public class QuerysController {
         //return (Iterable<String>) new Response("{\"estado\":\"" + queryRepository.Exite_utilizador(nome,pass)+ "\"",null);
     }
 
+    /*
+
     // terminar
-   /* @GetMapping(path = "/cria_utilizador/nome:[A-z]+}/morada:[.-z]+}/genero:[A-Z]+}/data:[.-z]+}/identificacao:[0-9]+}/email:[.-z]+}/pass:[.-z]+}/num_card:[0-9]+}/cvv:[0-9]+}/nome_cartao:[A-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+   @GetMapping(path = "/cria_utilizador/nome:[A-z]+}/morada:[.-z]+}/genero:[A-Z]+}/data:[.-z]+}/identificacao:[0-9]+}/email:[.-z]+}/pass:[.-z]+}/num_card:[0-9]+}/cvv:[0-9]+}/nome_cartao:[A-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> get_cria_utilizador(@PathVariable("nome") String nome,@PathVariable("morada") String morada,@PathVariable("genero") Character genero,@PathVariable("data") String data,@PathVariable("identificacao") int identificacao,@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("nome_cartao") String nome_cartao) {
         logger.info("Sending bio from route nome:,morada:,genero:,data:,identificacao:,email:,pass:, num_card:, cvv: ,nome_cartao:" + nome+morada+genero+data+identificacao+email+pass+num_card+cvv+nome_cartao);
         return queryRepository.criar_utilizador(nome,morada,genero,data,identificacao,email,pass,num_card,cvv,nome_cartao);
@@ -40,14 +42,15 @@ public class QuerysController {
         logger.info("Sending bio from route nome: ,pass:" + nome +pass);
         return queryRepository.utilizador_reserva(nome,pass);
     }
+*/
 
-    */
 
     @GetMapping(path = "/utilizador_info/{nome:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> get_utilizador_info(@PathVariable("nome") String nome,@PathVariable("pass") String pass) {
+    public Iterable<Utilizador> get_utilizador_info(@PathVariable("nome") String nome,@PathVariable("pass") String pass) {
         logger.info("Sending bio from route nome: ,pass:" + nome +pass);
         return queryRepository.utilizador_info(nome,pass);
     }
+    /*
 
     @GetMapping(path = "/garagens_info/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> get_garagens_info(@PathVariable("id") int id) {
@@ -55,19 +58,15 @@ public class QuerysController {
         return queryRepository.garagens_info(id);
     }
 
-    /*
+
+
     @GetMapping(path = "/adicionar_garagens/{utilizador_email:[.-z]+}/{utilizador_pass:[.-z]+}/{garagem_localizacao:[0-z]+}/{garagem_zona:[a-z]+}/{garagem_zona_cod:[0-9]+}/{garagem_lampada:[0-1]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> get_Add_garagens(@PathVariable("utilizador_email") String utilizador_email,@PathVariable("utilizador_pass") String utilizador_pass,@PathVariable("garagem_localizacao") String garagem_localizacao,@PathVariable("garagem_zona") String garagem_zona,@PathVariable("garagem_zona_cod") int garagem_zona_cod,@PathVariable("garagem_lampada") boolean garagem_lampada) {
         logger.info("Sending bio from route utilizador_email:,utilizador_pass:,garagem_localizacao:,garagem_zona:,garagem_zona_cod:,garagem_lampada:" + utilizador_email+utilizador_pass+garagem_localizacao+garagem_zona+garagem_zona_cod+garagem_lampada);
         return queryRepository.add_garagens(utilizador_email,utilizador_pass,garagem_localizacao,garagem_zona,garagem_zona_cod,garagem_lampada);
     }
-*/
 
-
-
-
-
-
+     */
 
 
     // banco
@@ -83,6 +82,7 @@ public class QuerysController {
         return queryRepository.levanta(utilizador ,num_card,cvv,quantidade_dinheiro);
     }
 }
+
 
 
 
