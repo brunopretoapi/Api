@@ -6,14 +6,16 @@ import javax.persistence.*;
 @Table(name = "garagens")
 public class Garagens {
 
-    //lampada
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "garagens_id", nullable = false)
     private Integer id;
 
-    @Column(name = "localizacao", nullable = false, length = 30)
-    private String localizacao;
+    @Column(name = "localizacao_rua", nullable = false, length = 90)
+    private String localizacaoRua;
+
+    @Column(name = "localizacao_geo", nullable = false, length = 30)
+    private String localizacaoGeo;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_propriatario", nullable = false)
@@ -62,12 +64,20 @@ public class Garagens {
         this.idPropriatario = idPropriatario;
     }
 
-    public String getLocalizacao() {
-        return localizacao;
+    public String getLocalizacaoGeo() {
+        return localizacaoGeo;
     }
 
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
+    public void setLocalizacaoGeo(String localizacaoGeo) {
+        this.localizacaoGeo = localizacaoGeo;
+    }
+
+    public String getLocalizacaoRua() {
+        return localizacaoRua;
+    }
+
+    public void setLocalizacaoRua(String localizacaoRua) {
+        this.localizacaoRua = localizacaoRua;
     }
 
     public Integer getGaragensId() {
