@@ -23,17 +23,17 @@ public class QuerysController {
     @Autowired
     private QueryRepository queryRepository;
 
-    @GetMapping(path = "/existe/{nome:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> getexit_userBypass_nome(@PathVariable("nome") String nome,@PathVariable("pass") String pass) {
-        logger.info("Sending bio from route nome: ,pass:" + nome +pass);
-        return queryRepository.Exite_utilizador(nome,pass);
+    @GetMapping(path = "/existe/{email:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getexit_userBypass_nome(@PathVariable("email") String email,@PathVariable("pass") String pass) {
+        logger.info("Sending bio from route email: ,pass:" + email +pass);
+        return queryRepository.Exite_utilizador(email,pass);
         //return (Iterable<String>) new Response("{\"estado\":\"" + queryRepository.Exite_utilizador(nome,pass)+ "\"",null);
     }
 
-    @GetMapping(path = "/utilizador_info/{nome:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Utilizador> get_utilizador_info(@PathVariable("nome") String nome,@PathVariable("pass") String pass) {
-        logger.info("Sending bio from route nome: ,pass:" + nome +pass);
-        return queryRepository.utilizador_info(nome,pass);
+    @GetMapping(path = "/utilizador_info/{email:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<Utilizador> get_utilizador_info(@PathVariable("email") String email,@PathVariable("pass") String pass) {
+        logger.info("Sending bio from route email: ,pass:" + email +pass);
+        return queryRepository.utilizador_info(email,pass);
     }
 
     @GetMapping(path = "/garagens_info/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -42,16 +42,16 @@ public class QuerysController {
         return queryRepository.garagens_info(id);
     }
 
-    @GetMapping(path = "/controlo_porta/{nome:[.-z]+}/{pass:[.-z]+}/{cod_dispositivo:[a-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> get_controlo_porta(@PathVariable("nome") String nome,@PathVariable("pass") String pass,@PathVariable("cod_dispositivo") String cod_dispositivo) {
-        logger.info("Sending bio from route nome:,pass:,cod_dispositivo:" + nome +pass + cod_dispositivo);
-        return queryRepository.controlo_porta(nome,pass,cod_dispositivo);
+    @GetMapping(path = "/controlo_porta/{email:[.-z]+}/{pass:[.-z]+}/{cod_dispositivo:[a-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> get_controlo_porta(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("cod_dispositivo") String cod_dispositivo) {
+        logger.info("Sending bio from route email:,pass:,cod_dispositivo:" + email +pass + cod_dispositivo);
+        return queryRepository.controlo_porta(email,pass,cod_dispositivo);
     }
 
-    @GetMapping(path = "/controlo_lampada/{nome:[.-z]+}/{pass:[.-z]+}/{cod_dispositivo:[a-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> get_controlo_lampada(@PathVariable("nome") String nome,@PathVariable("pass") String pass,@PathVariable("cod_dispositivo") String cod_dispositivo) {
-        logger.info("Sending bio from route nome:,pass:,cod_dispositivo:" + nome +pass + cod_dispositivo);
-        return queryRepository.controlo_lampada(nome,pass,cod_dispositivo);
+    @GetMapping(path = "/controlo_lampada/{email:[.-z]+}/{pass:[.-z]+}/{cod_dispositivo:[a-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> get_controlo_lampada(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("cod_dispositivo") String cod_dispositivo) {
+        logger.info("Sending bio from route email:,pass:,cod_dispositivo:" + email +pass + cod_dispositivo);
+        return queryRepository.controlo_lampada(email,pass,cod_dispositivo);
     }
 
     @GetMapping(path = "/controlo_tem_lampada/{cod_dispositivo:[a-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)

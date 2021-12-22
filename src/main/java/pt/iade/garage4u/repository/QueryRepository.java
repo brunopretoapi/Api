@@ -10,8 +10,8 @@ import java.sql.Date;
 
 public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
 
-    @Query(value = "select utilizador_existe(:nome,:pass)", nativeQuery = true)
-    Iterable<String> Exite_utilizador(String nome, String pass);
+    @Query(value = "select utilizador_existe(:email,:pass)", nativeQuery = true)
+    Iterable<String> Exite_utilizador(String email, String pass);
 
     @Query(value = "select depositar(:utilizador, :num_card, :cvv, :quantidade_dinheiro)", nativeQuery = true)
     Iterable<String> deposita(String utilizador, int num_card, int cvv, int quantidade_dinheiro);
@@ -22,17 +22,17 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     @Query(value = "select confirma_trasacao(:utilizador, :num_card, :cvv, :quantidade_dinheiro)", nativeQuery = true)
     Iterable<String> confirma_trasacao(String utilizador, int num_card, int cvv, int quantidade_dinheiro);
 
-    @Query(value = "select * from utilizador where utilizador_email = :nome and utilizador_pass = :pass", nativeQuery = true)
-    Iterable<Utilizador> utilizador_info(String nome, String pass);
+    @Query(value = "select * from utilizador where utilizador_email = :email and utilizador_pass = :pass", nativeQuery = true)
+    Iterable<Utilizador> utilizador_info(String email, String pass);
 
     @Query(value = "select * from garagens where garagens_id = :id", nativeQuery = true)
     Iterable<String> garagens_info(int id);
 
-    @Query(value = " select dispositivo_porta(:nome,:pass,:cod_dip)", nativeQuery = true)
-    Iterable<String> controlo_porta(String nome, String pass, String cod_dip);
+    @Query(value = " select dispositivo_porta(:email,:pass,:cod_dip)", nativeQuery = true)
+    Iterable<String> controlo_porta(String email, String pass, String cod_dip);
 
-    @Query(value = " select dispositivo_lampada(:nome,:pass,:cod_dip)", nativeQuery = true)
-    Iterable<String> controlo_lampada(String nome, String pass, String cod_dip);
+    @Query(value = " select dispositivo_lampada(:email,:pass,:cod_dip)", nativeQuery = true)
+    Iterable<String> controlo_lampada(String email, String pass, String cod_dip);
 
     @Query(value = " select dispositivo_tem_lampada(:cod_dip)", nativeQuery = true)
     Iterable<String> controlo_tem_lampada(String cod_dip);
