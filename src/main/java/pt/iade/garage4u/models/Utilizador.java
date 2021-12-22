@@ -37,13 +37,13 @@ public class Utilizador {
     @Column(name = "quantidade_dinheiro", nullable = false)
     private BigDecimal quantidadeDinheiro;
 
-    @Column(name = "num_cartao", nullable = false)
+    @Column(name = "num_cartao", nullable = true)
     private Integer numCartao;
 
-    @Column(name = "cvv", nullable = false)
+    @Column(name = "cvv", nullable = true)
     private Integer cvv;
 
-    @Column(name = "nome_cartao", nullable = false, length = 30)
+    @Column(name = "nome_cartao", nullable = true, length = 30)
     private String nomeCartao;
 
     public String getNomeCartao() {
