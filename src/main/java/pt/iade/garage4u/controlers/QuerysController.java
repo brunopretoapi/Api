@@ -10,6 +10,7 @@ import pt.iade.garage4u.models.Exceptions.Response;
 import pt.iade.garage4u.models.Utilizador;
 import pt.iade.garage4u.repository.QueryRepository;
 
+import java.sql.Date;
 import java.util.Optional;
 
 @RestController
@@ -39,6 +40,19 @@ public class QuerysController {
         logger.info("Sending bio from route id:" + id);
         return queryRepository.garagens_info(id);
     }
+
+    @GetMapping(path = "/teste/{nome:[A-z]+}/{morada:[.-z]+}/{genero:[a-z]+}/{data:[--9]+}/{identificacao:[0-9]+}/{email:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> get_teste(@PathVariable("nome") String nome,@PathVariable("morada") String morada,@PathVariable("genero") String genero,@PathVariable("data") Date data,@PathVariable("identificacao") int identificacao,@PathVariable("email") String email,@PathVariable("pass") String pass) {
+        logger.info("Sending bio from route nome:,morada:,genero:,data:,identificacao:,email:,pass:" + nome + morada + genero + data + identificacao+email+pass);
+        return queryRepository.teste(nome,morada,genero,data,identificacao,email,pass);
+    }
+
+    @GetMapping(path = "/cria_utilizador/{nome:[A-z]+}/{morada:[.-z]+}/{genero:[a-z]+}/{data:[--9]+}/{identificacao:[0-9]+}/{email:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> get_cria_utilizador(@PathVariable("nome") String nome,@PathVariable("morada") String morada,@PathVariable("genero") String genero,@PathVariable("data") Date data,@PathVariable("identificacao") int identificacao,@PathVariable("email") String email,@PathVariable("pass") String pass) {
+        logger.info("Sending bio from route nome:,morada:,genero:,data:,identificacao:,email:,pass:" + nome + morada + genero + data + identificacao+email+pass);
+        return queryRepository.criar_utilizador (nome,morada,genero,data,identificacao,email,pass);
+    }
+
 
 
     /*
