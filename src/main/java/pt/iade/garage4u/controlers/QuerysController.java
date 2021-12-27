@@ -74,8 +74,21 @@ public class QuerysController {
 
 
 
+//______________________________________________
 
-    /*
+  /*
+
+    @GetMapping(path = "/reservar/{email:[.-z]+}/{pass:[.-z]+}/{data_in:[.-z]+}/{data_out:[.-z]+}/{garagem:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getreservar(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("data_in") Date data_in,@PathVariable("data_out") Date data_out,@PathVariable("garagem") int garagem) {
+        logger.info("Sending bio from route email: ,pass:,data_in:,data_out:,garagem:" + email +pass+data_in+data_out+garagem);
+        return queryRepository.reserva(email,pass,data_in,data_out,garagem);
+    }
+
+
+
+
+
+
 
     @GetMapping(path = "/utilizador_reservas/{nome:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> getutilizador_reservas(@PathVariable("nome") String nome,@PathVariable("pass") String pass) {
@@ -114,6 +127,27 @@ public class QuerysController {
 
 
     // banco
+
+    @GetMapping(path = "/confirma_trasacao/{email:[.-z]+}/{pass:[.-z]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getUtilizador_confirma_trasacao(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
+        logger.info("Sending bio from route utilizador: email: ,pass:,quantidade_dinheiro:" + email+pass+quantidade_dinheiro);
+        return queryRepository.utilizador_confirma_trasacao(email ,pass,quantidade_dinheiro);
+    }
+
+    @GetMapping(path = "/depositar/{email:[.-z]+}/{pass:[.-z]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getUtilizador_depositar(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
+        logger.info("Sending bio from route utilizador: email: ,pass:,quantidade_dinheiro:" + email+pass+quantidade_dinheiro);
+        return queryRepository.utilizador_depositar(email ,pass,quantidade_dinheiro);
+    }
+
+    @GetMapping(path = "/levantar/{email:[.-z]+}/{pass:[.-z]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getUtilizador_levantar(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
+        logger.info("Sending bio from route utilizador: email: ,pass:,quantidade_dinheiro:" + email+pass+quantidade_dinheiro);
+        return queryRepository.utilizador_levantar(email ,pass,quantidade_dinheiro);
+    }
+
+
+
 
     @GetMapping(path = "/banco/confirma_trasacao/{utilizador:[A-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> getconfirma_trasacao(@PathVariable("utilizador") String utilizador,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {

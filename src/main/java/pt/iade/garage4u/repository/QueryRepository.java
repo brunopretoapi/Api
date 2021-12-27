@@ -43,6 +43,30 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     @Query(value = "select dispositivo.estado_luz from dispositivo Where rkay=:cod_dip", nativeQuery = true)
     Iterable<String> estado_luz(String cod_dip);
 
+    @Query(value = "select utilizador_confirma_trasacao(:email,:pass, :quantidade_dinheiro)", nativeQuery = true)
+    Iterable<String> utilizador_confirma_trasacao(String email, String pass, int quantidade_dinheiro);
+
+    @Query(value = "select utilizador_levantar(:email,:pass, :quantidade_dinheiro)", nativeQuery = true)
+    Iterable<String> utilizador_levantar(String email, String pass, int quantidade_dinheiro);
+
+    @Query(value = "select utilizador_depositar(:email,:pass, :quantidade_dinheiro)", nativeQuery = true)
+    Iterable<String> utilizador_depositar(String email, String pass, int quantidade_dinheiro);
+
+
+
+
+
+
+
+
+
+
+
+
+    @Query(value = "select reservar(:email,:pass,:data_entrada,:data_saida,:id_garagem)", nativeQuery = true)
+    Iterable<String> reserva(String email, String pass,Date data_entrada,Date data_saida,int id_garagem);
+
+
 
 
 
