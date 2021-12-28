@@ -134,7 +134,7 @@ public class Utilizador {
         this.utilizadorName = utilizadorName;
     }
 
-    public Integer getId() {
+    public Integer getUtilizadorID() {
         return id;
     }
 
