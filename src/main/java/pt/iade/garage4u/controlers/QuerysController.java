@@ -126,11 +126,35 @@ public class QuerysController {
      */
 
 
+
+
+    //
+
+    //update
+
+
+
+    @GetMapping(path = "/utilizador_update_dados/{email:[.-z]+}/{pass:[.-z]+}/{nome:[A-z]+}/{morada:[.-z]+}/{data:[--9]+}/{identificacao:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> get_utilizador_update_dados(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("nome") String nome,@PathVariable("morada") String morada,@PathVariable("data") Date data,@PathVariable("identificacao") int identificacao) {
+        logger.info("Sending bio from route nome:,morada:,data:,identificacao:,email:,pass:" + nome + morada + data + identificacao+email+pass);
+        return queryRepository.utilizador_update_dados(email,pass,nome,morada,data,identificacao);
+    }
+
+
+
+
+    @GetMapping(path = "/utilizador_update_cartao/{email:[.-z]+}/{pass:[.-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{utilizador:[A-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getutilizador_update_cartao(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("utilizador") String utilizador) {
+        logger.info("Sending bio from route utilizador: email: ,pass:,utilizador: ,num_card:,cvv::" + email+pass);
+        return queryRepository.utilizador_update_cartao(email,pass,num_card,cvv,utilizador);
+    }
+
+
     // banco
 
     @GetMapping(path = "/confirma_trasacao/{email:[.-z]+}/{pass:[.-z]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> getUtilizador_confirma_trasacao(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
-        logger.info("Sending bio from route utilizador: email: ,pass:,quantidade_dinheiro:" + email+pass+quantidade_dinheiro);
+        logger.info("Sending bio from route utilizador: email: ,pass:,quantidade_dinheiro:" + email+pass+ quantidade_dinheiro);
         return queryRepository.utilizador_confirma_trasacao(email ,pass,quantidade_dinheiro);
     }
 
