@@ -11,7 +11,7 @@ public class Utilizador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "utilizador_id", nullable = false)
-    private Integer utilizadorId;
+    private Integer id;
 
     @Column(name = "utilizador_name", nullable = false, length = 60)
     private String utilizadorName;
@@ -37,13 +37,13 @@ public class Utilizador {
     @Column(name = "quantidade_dinheiro", nullable = false)
     private BigDecimal quantidadeDinheiro;
 
-    @Column(name = "num_cartao", nullable = true)
+    @Column(name = "num_cartao")
     private Integer numCartao;
 
-    @Column(name = "cvv", nullable = true)
+    @Column(name = "cvv")
     private Integer cvv;
 
-    @Column(name = "nome_cartao", nullable = true, length = 30)
+    @Column(name = "nome_cartao", length = 30)
     private String nomeCartao;
 
     public String getNomeCartao() {
@@ -134,12 +134,12 @@ public class Utilizador {
         this.utilizadorName = utilizadorName;
     }
 
-    public Integer getUtilizadorID() {
-        return utilizadorId;
+    public Integer getId() {
+        return id;
     }
 
     public void setId(Integer id) {
-        this.utilizadorId = id;
+        this.id = id;
     }
 }
 
