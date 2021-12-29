@@ -37,6 +37,9 @@ public class Utilizador {
     @Column(name = "quantidade_dinheiro", nullable = false)
     private BigDecimal quantidadeDinheiro;
 
+    @Column(name = "tipo_de_pag_perf_cartao", nullable = false)
+    private Boolean tipoDePagPerfCartao = false;
+
     @Column(name = "num_cartao")
     private Integer numCartao;
 
@@ -68,6 +71,14 @@ public class Utilizador {
 
     public void setNumCartao(Integer numCartao) {
         this.numCartao = numCartao;
+    }
+
+    public Boolean getTipoDePagPerfCartao() {
+        return tipoDePagPerfCartao;
+    }
+
+    public void setTipoDePagPerfCartao(Boolean tipoDePagPerfCartao) {
+        this.tipoDePagPerfCartao = tipoDePagPerfCartao;
     }
 
     public BigDecimal getQuantidadeDinheiro() {

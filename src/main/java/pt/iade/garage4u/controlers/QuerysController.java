@@ -3,16 +3,12 @@ package pt.iade.garage4u.controlers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import pt.iade.garage4u.models.Exceptions.Response;
 import pt.iade.garage4u.models.Utilizador;
 import pt.iade.garage4u.repository.QueryRepository;
 
 import java.sql.Date;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/querys")
@@ -142,11 +138,10 @@ public class QuerysController {
 
 
 
-
-    @GetMapping(path = "/utilizador_update_cartao/{email:[.-z]+}/{pass:[.-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{utilizador:[A-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> getutilizador_update_cartao(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("utilizador") String utilizador) {
+    @GetMapping(path = "/utilizador_update_cartao/{email:[.-z]+}/{pass:[.-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{utilizador:[A-z]+}/{tipo_de_pag_perf_cartao:[0-1]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getutilizador_update_cartao(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("utilizador") String utilizador,@PathVariable("tipo_de_pag_perf_cartao") int tipo_de_pag_perf_cartao) {
         logger.info("Sending bio from route utilizador: email: ,pass:,utilizador: ,num_card:,cvv::" + email+pass);
-        return queryRepository.utilizador_update_cartao(email,pass,num_card,cvv,utilizador);
+        return queryRepository.utilizador_update_cartao(email,pass,num_card,cvv,utilizador,tipo_de_pag_perf_cartao);
     }
 
 
