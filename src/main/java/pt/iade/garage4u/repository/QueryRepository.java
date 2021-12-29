@@ -50,8 +50,8 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     @Query(value = "select utilizador_depositar(:email,:pass, :quantidade_dinheiro)", nativeQuery = true)
     Iterable<String> utilizador_depositar(String email, String pass, int quantidade_dinheiro);
 
-    @Query(value = "select utilizador_update_cartao(:email,:pass,:num_card, :cvv,:nome_cartaom,:tipo_de_pag_perf_cartao)", nativeQuery = true)
-    Iterable<String> utilizador_update_cartao(String email, String pass,int num_card, int cvv,String nome_cartao,int tipo_de_pag_perf_cartao);
+    @Query(value = "select utilizador_update_cartao(:email,:pass,:num_card, :cvv,:nome_cartaom)", nativeQuery = true)
+    Iterable<String> utilizador_update_cartao(String email, String pass,int num_card, int cvv,String nome_cartao);
 
     @Query(value = "select utilizador_update_dados(:email,:pass,:nome,:morada,:data,:identificacao)", nativeQuery = true)
     Iterable<String> utilizador_update_dados(String email, String pass,String nome, String morada, Date data ,int identificacao);
