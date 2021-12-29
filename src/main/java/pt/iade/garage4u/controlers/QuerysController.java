@@ -137,7 +137,7 @@ public class QuerysController {
     }
 
     @GetMapping(path = "/utilizador_update_cartao/{email:[.-z]+}/{pass:[.-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{utilizador:[A-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> getutilizador_update_cartao(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("utilizador") String utilizador,@PathVariable("tipo_de_pag_perf_cartao") int tipo_de_pag_perf_cartao) {
+    public Iterable<String> getutilizador_update_cartao(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("utilizador") String utilizador) {
         logger.info("Sending bio from route utilizador: email: ,pass:,utilizador: ,num_card:,cvv::" + email+pass);
         return queryRepository.utilizador_update_cartao(email,pass,num_card,cvv,utilizador);
     }
