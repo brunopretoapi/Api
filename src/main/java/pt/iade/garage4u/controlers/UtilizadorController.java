@@ -24,8 +24,8 @@ public class UtilizadorController {
     private UtilizadorRepository utilizadorRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Utilizador> getUtilizadores() {
-        logger.info("Sending all utilizadores");
+    public Iterable<Utilizador> getUtilizadors() {
+        logger.info("Sending all utilizador");
         return utilizadorRepository.findAll();
     }
 
@@ -42,7 +42,7 @@ public class UtilizadorController {
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public Utilizador saveUtilizador(@RequestBody Utilizador utilizador) {
         Utilizador savedUtilizador = utilizadorRepository.save(utilizador);
-        logger.info("Saving utilizador with id " + savedUtilizador.getUtilizadorID());   //Ir ao model e ver o nome do ID
+        logger.info("Saving utilizador with id " + savedUtilizador.getUtilizadorId());
         return savedUtilizador;
     }
 
