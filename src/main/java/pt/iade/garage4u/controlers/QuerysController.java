@@ -69,6 +69,20 @@ public class QuerysController {
     }
 
 
+    @GetMapping(path = "/cria_utilizador/{nome:[A-z]+}/{morada:[.-z]+}/{genero:[a-z]+}/{data:[--9]+}/{identificacao:[0-9]+}/{email:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> get_cria_utilizador(@PathVariable("nome") String nome,@PathVariable("morada") String morada,@PathVariable("genero") String genero,@PathVariable("data") String data,@PathVariable("identificacao") int identificacao,@PathVariable("email") String email,@PathVariable("pass") String pass) {
+        logger.info("Sending bio from route nome:,morada:,genero:,data:,identificacao:,email:,pass:" + nome + morada + genero + data + identificacao+email+pass);
+        return queryRepository.criar_utilizador (nome,morada,genero,data,identificacao,email,pass);
+    }
+
+    @GetMapping(path = "/Reserva_garagens/{email:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getReserva_garagens(@PathVariable("email") String email,@PathVariable("pass") String pass) {
+        logger.info("Sending bio from route email: ,pass:" + email +pass);
+        return queryRepository.Reserva_garagens(email,pass);
+    }
+
+
+
 
 //______________________________________________
 
@@ -98,11 +112,7 @@ public class QuerysController {
         return queryRepository.teste(nome,morada,genero,data,identificacao,email,pass);
     }
 
-    @GetMapping(path = "/cria_utilizador/{nome:[A-z]+}/{morada:[.-z]+}/{genero:[a-z]+}/{data:[--9]+}/{identificacao:[0-9]+}/{email:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> get_cria_utilizador(@PathVariable("nome") String nome,@PathVariable("morada") String morada,@PathVariable("genero") String genero,@PathVariable("data") Date data,@PathVariable("identificacao") int identificacao,@PathVariable("email") String email,@PathVariable("pass") String pass) {
-        logger.info("Sending bio from route nome:,morada:,genero:,data:,identificacao:,email:,pass:" + nome + morada + genero + data + identificacao+email+pass);
-        return queryRepository.criar_utilizador (nome,morada,genero,data,identificacao,email,pass);
-    }
+
 
 
 
@@ -149,6 +159,12 @@ public class QuerysController {
     }
 
 
+
+
+
+
+
+
     // banco
 
     @GetMapping(path = "/confirma_trasacao/{email:[.-z]+}/{pass:[.-z]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -188,6 +204,32 @@ public class QuerysController {
     public Iterable<String> getlevantar(@PathVariable("utilizador") String utilizador,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
         logger.info("Sending bio from route utilizador: ,num_card:,cvv:,quantidade_dinheiro:" + utilizador +num_card+cvv+quantidade_dinheiro);
         return queryRepository.levanta(utilizador ,num_card,cvv,quantidade_dinheiro);
+    }
+
+
+
+
+
+
+
+    public static String Troca_String(String texto, String substituto,String substituir)
+    {return Troca_String_met("",texto,substituto,substituir);}
+    public static String Troca_String_met(String texto_final, String texto, String substituto,String substituir) {
+        if(texto.length()!=0)
+        {
+            if(texto_final.length()==0)
+            {
+                if(!substituto.equals(texto.substring(texto.length()-1,texto.length())))
+                {texto+=substituto;}
+            }
+            texto_final+=texto.substring(0,texto.indexOf(substituto));
+            texto = texto.substring(texto.indexOf(substituto)+substituto.length());
+            if(texto.length()!=0)
+            {texto_final+=substituir;}
+
+            texto_final=Troca_String_met(texto_final,texto,substituto,substituir);
+        }
+        return texto_final;
     }
 }
 
