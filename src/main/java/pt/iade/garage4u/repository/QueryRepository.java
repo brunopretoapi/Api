@@ -59,6 +59,8 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     @Query(value = "select utilizador_tipo_de_pag_perf_cartao(:email,:pass)", nativeQuery = true)
     Iterable<String> utilizador_tipo_de_pag_perf_cartao(String email, String pass);
 
+    @Query(value = " select termina_reserva(:email,:pass,:cod_dip)", nativeQuery = true)
+    Iterable<String> termina_reserva(String email, String pass, String cod_dip);
 
 
 

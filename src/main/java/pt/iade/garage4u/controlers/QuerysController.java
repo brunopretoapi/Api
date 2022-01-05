@@ -81,6 +81,12 @@ public class QuerysController {
         return queryRepository.Reserva_garagens(email,pass);
     }
 
+    @GetMapping(path = "/termina_reserva/{email:[.-z]+}/{pass:[.-z]+}/{cod_dispositivo:[a-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> get_termina_reserva(@PathVariable("email") String email,@PathVariable("pass") String pass,@PathVariable("cod_dispositivo") String cod_dispositivo) {
+        logger.info("Sending bio from route email:,pass:,cod_dispositivo:" + email +pass + cod_dispositivo);
+        return queryRepository.termina_reserva(email,pass,cod_dispositivo);
+    }
+
 
 
 
@@ -206,6 +212,7 @@ public class QuerysController {
         return queryRepository.levanta(utilizador ,num_card,cvv,quantidade_dinheiro);
     }
 
+    //Troca_String(utilizador,"%20"," ")
 
 
 
