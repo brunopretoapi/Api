@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
@@ -35,6 +36,11 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     @Query(value = " select dispositivo_tem_lampada(:cod_dip)", nativeQuery = true)
     Iterable<String> controlo_tem_lampada(String cod_dip);
 
+
+
+
+
+
     @Query(value = "select dispositivo.estado_portao from dispositivo Where rkay=:cod_dip", nativeQuery = true)
     Iterable<String> estado_portao(String cod_dip);
 
@@ -50,6 +56,12 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     @Query(value = "select utilizador_depositar(:email,:pass, :quantidade_dinheiro)", nativeQuery = true)
     Iterable<String> utilizador_depositar(String email, String pass, int quantidade_dinheiro);
 
+
+
+
+
+
+
     @Query(value = "select utilizador_update_cartao(:email,:pass,:num_card, :cvv,:nome_cartao)", nativeQuery = true)
     Iterable<String> utilizador_update_cartao(String email, String pass,int num_card, int cvv,String nome_cartao);
 
@@ -58,6 +70,7 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
 
     @Query(value = "select utilizador_tipo_de_pag_perf_cartao(:email,:pass)", nativeQuery = true)
     Iterable<String> utilizador_tipo_de_pag_perf_cartao(String email, String pass);
+
 
     @Query(value = " select termina_reserva(:email,:pass,:cod_dip)", nativeQuery = true)
     Iterable<String> termina_reserva(String email, String pass, String cod_dip);
@@ -88,7 +101,7 @@ public interface QueryRepository extends CrudRepository<Utilizador, Integer> {
     Iterable<String> teste(String nome, String morada, String genero, Date data ,int identificacao,String email, String pass);
 
     @Query(value = " call cria_utilizador(:nome,:morada,:genero,:data,:identificacao,:email,:pass,null)", nativeQuery = true)
-    Iterable<String> criar_utilizador(String nome, String morada, String genero, String data ,int identificacao,String email, String pass);
+    Iterable<String> criar_utilizador(String nome, String morada, String genero, LocalDate data , int identificacao, String email, String pass);
 
     @Query(value = "select localizacao_rua,hora_de_entrda,hora_saida,rkay from reserva inner join utilizador on id_utilizador = utilizador_id left join res_gar on reserva.reservas_id = res_gar.reservas_id inner join dispositivo on res_gar.garagens_id = dispositivo.id_garagem inner join garagens on res_gar.garagens_id = garagens.garagens_id where utilizador_email = :email and utilizador_pass = :pass", nativeQuery = true)
     Iterable<String> Reserva_garagens(String email, String pass);

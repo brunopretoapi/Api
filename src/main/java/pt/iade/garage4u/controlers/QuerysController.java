@@ -9,6 +9,7 @@ import pt.iade.garage4u.models.Utilizador;
 import pt.iade.garage4u.repository.QueryRepository;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping(path = "/api/querys")
@@ -70,7 +71,7 @@ public class QuerysController {
 
 
     @GetMapping(path = "/cria_utilizador/{nome:[A-z]+}/{morada:[.-z]+}/{genero:[a-z]+}/{data:[--9]+}/{identificacao:[0-9]+}/{email:[.-z]+}/{pass:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> get_cria_utilizador(@PathVariable("nome") String nome,@PathVariable("morada") String morada,@PathVariable("genero") String genero,@PathVariable("data") String data,@PathVariable("identificacao") int identificacao,@PathVariable("email") String email,@PathVariable("pass") String pass) {
+    public Iterable<String> get_cria_utilizador(@PathVariable("nome") String nome, @PathVariable("morada") String morada, @PathVariable("genero") String genero, @PathVariable("data") LocalDate data, @PathVariable("identificacao") int identificacao, @PathVariable("email") String email, @PathVariable("pass") String pass) {
         logger.info("Sending bio from route nome:,morada:,genero:,data:,identificacao:,email:,pass:" + nome + morada + genero + data + identificacao+email+pass);
         return queryRepository.criar_utilizador (nome,morada,genero,data,identificacao,email,pass);
     }
@@ -209,10 +210,11 @@ public class QuerysController {
     @GetMapping(path = "/banco/levantar/{utilizador:[A-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> getlevantar(@PathVariable("utilizador") String utilizador,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
         logger.info("Sending bio from route utilizador: ,num_card:,cvv:,quantidade_dinheiro:" + utilizador +num_card+cvv+quantidade_dinheiro);
-        return queryRepository.levanta(utilizador ,num_card,cvv,quantidade_dinheiro);
+        return queryRepository.deposita(utilizador ,num_card,cvv,quantidade_dinheiro);
     }
 
     //Troca_String(utilizador,"%20"," ")
+
 
 
 
@@ -238,6 +240,7 @@ public class QuerysController {
         }
         return texto_final;
     }
+
 }
 
 
