@@ -195,11 +195,15 @@ public class QuerysController {
 
 
 
+
     @GetMapping(path = "/banco/confirma_trasacao/{utilizador:[A-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> getconfirma_trasacao(@PathVariable("utilizador") String utilizador,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
         logger.info("Sending bio from route utilizador: ,num_card:,cvv:,quantidade_dinheiro:" + utilizador +num_card+cvv+quantidade_dinheiro);
         return queryRepository.confirma_trasacao(utilizador ,num_card,cvv,quantidade_dinheiro);
     }
+
+
+
 
     @GetMapping(path = "/banco/depositar/{utilizador:[A-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> getdepositar(@PathVariable("utilizador") String utilizador,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
@@ -210,7 +214,7 @@ public class QuerysController {
     @GetMapping(path = "/banco/levantar/{utilizador:[A-z]+}/{num_card:[0-9]+}/{cvv:[0-9]+}/{quantidade_dinheiro:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<String> getlevantar(@PathVariable("utilizador") String utilizador,@PathVariable("num_card") int num_card,@PathVariable("cvv") int cvv,@PathVariable("quantidade_dinheiro") int quantidade_dinheiro) {
         logger.info("Sending bio from route utilizador: ,num_card:,cvv:,quantidade_dinheiro:" + utilizador +num_card+cvv+quantidade_dinheiro);
-        return queryRepository.deposita(utilizador ,num_card,cvv,quantidade_dinheiro);
+        return queryRepository.levanta(utilizador ,num_card,cvv,quantidade_dinheiro);
     }
 
     //Troca_String(utilizador,"%20"," ")

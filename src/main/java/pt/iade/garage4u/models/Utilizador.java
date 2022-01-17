@@ -145,7 +145,7 @@ public class Utilizador {
         this.utilizadorName = utilizadorName;
     }
 
-    public Integer getId() {
+    public Integer getUtilizadorId() {
         return utilizadorId;
     }
 
