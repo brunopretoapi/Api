@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>pt.iade</groupId>
-    <artifactId>garage4u</artifactId>
+    <artifactId>Api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>garage4u</name>
-    <description>garage4u</description>
+    <name>Api</name>
+    <description>Api</description>
     <properties>
         <java.version>8</java.version>
     </properties>

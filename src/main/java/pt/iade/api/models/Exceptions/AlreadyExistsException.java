@@ -1,4 +1,4 @@
-package pt.iade.garage4u.models.Exceptions;
+package pt.iade.api.models.Exceptions;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.web.bind.annotation.ResponseStatus;

@@ -1,4 +1,4 @@
-package pt.iade.garage4u.models.Exceptions;
+package pt.iade.api.models.Exceptions;
 
 
 public class NotFoundException extends RuntimeException {

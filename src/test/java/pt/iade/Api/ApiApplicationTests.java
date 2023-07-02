@@ -1,10 +1,10 @@
-package pt.iade.garage4u;
+package pt.iade.Api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Garage4uApplicationTests {
+class ApiApplicationTests {
 
     @Test
     void contextLoads() {
