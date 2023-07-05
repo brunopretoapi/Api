@@ -11,11 +11,11 @@ public class Equipamentos {
     @Column(name = "id_equipamentos", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_marca")
     private marca idMarca;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "id_tipo")
     private tipo idTipo;
 

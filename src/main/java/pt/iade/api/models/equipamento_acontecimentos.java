@@ -11,15 +11,15 @@ public class equipamento_acontecimentos {
     @Column(name = "id_equipamento_acontecimentos", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_acontecimentos", nullable = false)
     private acontecimentos idAcontecimentos;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_tipo_acontecimento", nullable = false)
     private TipoAcontecimento idTipoAcontecimento;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "id_equipamentos", nullable = false)
     private Equipamentos idEquipamentos;
 
