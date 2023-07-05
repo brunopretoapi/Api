@@ -4,20 +4,21 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "equipamentos")
-public class Equipamentos {
+public class equipamentos {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_equipamentos", nullable = false)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_marca")
-    private Marca idMarca;
+    private marca idMarca;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo")
-    private Tipo idTipo;
+    private tipo idTipo;
 
     @Column(name = "quantidade")
     private Integer quantidade;
@@ -52,19 +53,19 @@ public class Equipamentos {
         this.quantidade = quantidade;
     }
 
-    public Tipo getIdTipo() {
+    public tipo getIdTipo() {
         return idTipo;
     }
 
-    public void setIdTipo(Tipo idTipo) {
+    public void setIdTipo(tipo idTipo) {
         this.idTipo = idTipo;
     }
 
-    public Marca getIdMarca() {
+    public marca getIdMarca() {
         return idMarca;
     }
 
-    public void setIdMarca(Marca idMarca) {
+    public void setIdMarca(marca idMarca) {
         this.idMarca = idMarca;
     }
 

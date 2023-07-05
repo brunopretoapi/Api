@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import pt.iade.api.models.Exceptions.NotFoundException;
 import pt.iade.api.models.Exceptions.Response;
-import pt.iade.api.models.Tipo;
+import pt.iade.api.models.tipo;
 import pt.iade.api.models.repositories.TipoRepository;
 
 import java.util.Optional;
@@ -22,15 +22,15 @@ public class TipoController {
     private TipoRepository tipoRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Tipo> getTipos() {
+    public Iterable<tipo> getTipos() {
         logger.info("Sending all tipo");
         return tipoRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Tipo getTipo(@PathVariable int id) {
+    public tipo getTipo(@PathVariable int id) {
         logger.info("Sending tipo with id " + id);
-        Optional<Tipo> _tipo = tipoRepository.findById(id);
+        Optional<tipo> _tipo = tipoRepository.findById(id);
         if (!_tipo.isPresent())
             throw new NotFoundException("" + id, "Tipo", "id");
         else
@@ -38,8 +38,8 @@ public class TipoController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Tipo saveTipo(@RequestBody Tipo tipo) {
-        Tipo savedTipo = tipoRepository.save(tipo);
+    public tipo saveTipo(@RequestBody tipo tipo) {
+        pt.iade.api.models.tipo savedTipo = tipoRepository.save(tipo);
         logger.info("Saving tipo with id " + savedTipo.getId());
         return savedTipo;
     }

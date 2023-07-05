@@ -1,14 +1,11 @@
 package pt.iade.api.repository;
 
-import pt.iade.api.models.Equipamentos;
+import pt.iade.api.models.equipamentos;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import java.sql.Date;
-import java.time.LocalDate;
 
-
-public interface QueryRepository extends CrudRepository<Equipamentos, Integer> {
+public interface QueryRepository extends CrudRepository<equipamentos, Integer> {
 
 
     @Query(value = "select id_equipamentos,nome,quantidade,marca,tipo,descricao from equipamentos inner join marca on marca.id_marca = equipamentos.id_marca inner join tipo on tipo.id_tipo = equipamentos.id_tipo where marca = :marca", nativeQuery = true)

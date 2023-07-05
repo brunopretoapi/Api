@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import pt.iade.api.models.Exceptions.NotFoundException;
 import pt.iade.api.models.Exceptions.Response;
-import pt.iade.api.models.Marca;
+import pt.iade.api.models.marca;
 import pt.iade.api.models.repositories.MarcaRepository;
 
 import java.util.Optional;
@@ -22,15 +22,15 @@ public class MarcaController {
     private MarcaRepository marcaRepository;
 
     @GetMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<Marca> getMarcas() {
+    public Iterable<marca> getMarcas() {
         logger.info("Sending all marca");
         return marcaRepository.findAll();
     }
 
     @GetMapping(path = "/{id:[0-9]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Marca getMarca(@PathVariable int id) {
+    public marca getMarca(@PathVariable int id) {
         logger.info("Sending marca with id " + id);
-        Optional<Marca> _marca = marcaRepository.findById(id);
+        Optional<marca> _marca = marcaRepository.findById(id);
         if (!_marca.isPresent())
             throw new NotFoundException("" + id, "Marca", "id");
         else
@@ -38,8 +38,8 @@ public class MarcaController {
     }
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Marca saveMarca(@RequestBody Marca marca) {
-        Marca savedMarca = marcaRepository.save(marca);
+    public marca saveMarca(@RequestBody marca marca) {
+        pt.iade.api.models.marca savedMarca = marcaRepository.save(marca);
         logger.info("Saving marca with id " + savedMarca.getId());
         return savedMarca;
     }
