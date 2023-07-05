@@ -16,10 +16,10 @@ public class acontecimentos {
     @Column(name = "descricao", nullable = false, length = 1000)
     private String descricao;
 
-    @Column(name = "data", nullable = false)
+    @Column(name = "data")
     private LocalDate data;
 
-    @Column(name = "hora", nullable = false)
+    @Column(name = "hora")
     private LocalTime hora;
 
     public LocalTime getHora() {
