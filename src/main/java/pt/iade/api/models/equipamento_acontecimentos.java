@@ -21,13 +21,13 @@ public class equipamento_acontecimentos {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_equipamentos", nullable = false)
-    private equipamentos idEquipamentos;
+    private Equipamentos idEquipamentos;
 
-    public equipamentos getIdEquipamentos() {
+    public Equipamentos getIdEquipamentos() {
         return idEquipamentos;
     }
 
-    public void setIdEquipamentos(equipamentos idEquipamentos) {
+    public void setIdEquipamentos(Equipamentos idEquipamentos) {
         this.idEquipamentos = idEquipamentos;
     }
 
