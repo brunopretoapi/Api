@@ -1,11 +1,11 @@
 package pt.iade.api.repository;
 
-import pt.iade.api.models.Equipamentos;
+import pt.iade.api.models.equipamentos;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 
-public interface QueryRepository extends CrudRepository<Equipamentos, Integer> {
+public interface QueryRepository extends CrudRepository<equipamentos, Integer> {
 
 
     @Query(value = "select id_equipamentos,nome,quantidade,marca,tipo,descricao from equipamentos inner join marca on marca.id_marca = equipamentos.id_marca inner join tipo on tipo.id_tipo = equipamentos.id_tipo where marca = :marca", nativeQuery = true)
@@ -31,8 +31,6 @@ public interface QueryRepository extends CrudRepository<Equipamentos, Integer> {
     Iterable<String> equipamentobynomeORD(String nome);
 
 
-
-
     //by id
 
 
@@ -53,6 +51,15 @@ public interface QueryRepository extends CrudRepository<Equipamentos, Integer> {
 
     @Query(value = "select id_equipamentos,nome,quantidade,marca,tipo,descricao from equipamentos inner join marca on marca.id_marca = equipamentos.id_marca inner join tipo on tipo.id_tipo = equipamentos.id_tipo where id_equipamentos = :id ORDER BY equipamentos.nome", nativeQuery = true)
     Iterable<String> equipamentobyidORD(int id);
+
+
+
+    @Query(value = "select * from equipamentos inner join equipamento_acontecimentos on equipamento_acontecimentos.id_equipamentos = equipamentos.id_equipamentos inner join tipo_acontecimento on tipo_acontecimento.id_tipo_acontecimento = equipamento_acontecimentos.id_tipo_acontecimento inner join acontecimentos on acontecimentos.id_acontecimentos = equipamento_acontecimentos.id_acontecimentos where tipo_acontecimento = :tipo_acontecimento", nativeQuery = true)
+    Iterable<String> acontecimento(String tipo_acontecimento);
+
+
+
+
 
 
 

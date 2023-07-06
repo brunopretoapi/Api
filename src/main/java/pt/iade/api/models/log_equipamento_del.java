@@ -3,19 +3,20 @@ package pt.iade.api.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "equipamentos")
-public class Equipamentos {
+@Table(name = "log_equipamento_del")
+public class log_equipamento_del {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_equipamentos", nullable = false)
+    @Column(name = "id_log_equipamento_del", nullable = false)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_marca")
     private marca idMarca;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo")
     private tipo idTipo;
 

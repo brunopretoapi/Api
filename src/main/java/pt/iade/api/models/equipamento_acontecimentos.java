@@ -17,25 +17,25 @@ public class equipamento_acontecimentos {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_tipo_acontecimento", nullable = false)
-    private TipoAcontecimento idTipoAcontecimento;
+    private tipo_acontecimento idTipoAcontecimento;
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_equipamentos", nullable = false)
-    private Equipamentos idEquipamentos;
+    private equipamentos idEquipamentos;
 
-    public Equipamentos getIdEquipamentos() {
+    public equipamentos getIdEquipamentos() {
         return idEquipamentos;
     }
 
-    public void setIdEquipamentos(Equipamentos idEquipamentos) {
+    public void setIdEquipamentos(equipamentos idEquipamentos) {
         this.idEquipamentos = idEquipamentos;
     }
 
-    public TipoAcontecimento getIdTipoAcontecimento() {
+    public tipo_acontecimento getIdTipoAcontecimento() {
         return idTipoAcontecimento;
     }
 
-    public void setIdTipoAcontecimento(TipoAcontecimento idTipoAcontecimento) {
+    public void setIdTipoAcontecimento(tipo_acontecimento idTipoAcontecimento) {
         this.idTipoAcontecimento = idTipoAcontecimento;
     }
 

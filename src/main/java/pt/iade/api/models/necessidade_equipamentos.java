@@ -17,13 +17,13 @@ public class necessidade_equipamentos {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "id_equipamentos", nullable = false)
-    private Equipamentos idEquipamentos;
+    private equipamentos idEquipamentos;
 
-    public Equipamentos getIdEquipamentos() {
+    public equipamentos getIdEquipamentos() {
         return idEquipamentos;
     }
 
-    public void setIdEquipamentos(Equipamentos idEquipamentos) {
+    public void setIdEquipamentos(equipamentos idEquipamentos) {
         this.idEquipamentos = idEquipamentos;
     }
 
