@@ -54,8 +54,12 @@ public interface QueryRepository extends CrudRepository<equipamentos, Integer> {
 
 
 
-    @Query(value = "select * from equipamentos inner join equipamento_acontecimentos on equipamento_acontecimentos.id_equipamentos = equipamentos.id_equipamentos inner join tipo_acontecimento on tipo_acontecimento.id_tipo_acontecimento = equipamento_acontecimentos.id_tipo_acontecimento inner join acontecimentos on acontecimentos.id_acontecimentos = equipamento_acontecimentos.id_acontecimentos where tipo_acontecimento = :tipo_acontecimento", nativeQuery = true)
+    @Query(value = "select quantidade,nome,tipo_acontecimento,data,hora from equipamentos inner join equipamento_acontecimentos on equipamento_acontecimentos.id_equipamentos = equipamentos.id_equipamentos inner join tipo_acontecimento on tipo_acontecimento.id_tipo_acontecimento = equipamento_acontecimentos.id_tipo_acontecimento inner join acontecimentos on acontecimentos.id_acontecimentos = equipamento_acontecimentos.id_acontecimentos where tipo_acontecimento = :tipo_acontecimento", nativeQuery = true)
     Iterable<String> acontecimento(String tipo_acontecimento);
+
+
+    @Query(value = "select criar_acontecimento_com_necessidade(:id_equipamento,:nessecidade_falta)", nativeQuery = true)
+    Iterable<String> criar_acontecimento_com_necessidade(int id_equipamento,String nessecidade_falta);
 
 
 

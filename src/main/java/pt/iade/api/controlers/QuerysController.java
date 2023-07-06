@@ -89,9 +89,15 @@ public class QuerysController {
 
 
     @GetMapping(path = "/nome/acontecimento/{tipo_acontecimento:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<String> getaacontecimento(@PathVariable("nome") String tipo_acontecimento) {
-        logger.info("Sending bio from equipamento nome ORDENADO" + tipo_acontecimento);
+    public Iterable<String> getaacontecimento(@PathVariable("tipo_acontecimento") String tipo_acontecimento) {
+        logger.info("Sending bio from tipo_acontecimento " + tipo_acontecimento);
         return queryRepository.acontecimento(tipo_acontecimento);
+    }
+
+    @GetMapping(path = "/nome/criar_acontecimento/{id_equipamento:[0-9]+}/{nessecidade_falta:[.-z]+}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<String> getaacontecimento(@PathVariable("id_equipamento") int id_equipamento,@PathVariable("nessecidade_falta") String nessecidade_falta) {
+        logger.info("Sending bio from equipamento id " + id_equipamento + "nessecidade_falta" + nessecidade_falta);
+        return queryRepository.criar_acontecimento_com_necessidade(id_equipamento,nessecidade_falta);
     }
 
 

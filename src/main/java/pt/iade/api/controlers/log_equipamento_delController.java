@@ -39,7 +39,7 @@ public class log_equipamento_delController {
 
     @PostMapping(path = "", produces = MediaType.APPLICATION_JSON_VALUE)
     public log_equipamento_del savelog_equipamento_del(@RequestBody log_equipamento_del log_equipamento_del) {
-        pt.iade.api.models.equipamentos savedlog_equipamento_del = Log_equipamento_delRepository.save(log_equipamento_del);
+        pt.iade.api.models.log_equipamento_del savedlog_equipamento_del = Log_equipamento_delRepository.save(log_equipamento_del);
         logger.info("Saving log_equipamento_del with id " + savedlog_equipamento_del.getId());
         return savedlog_equipamento_del;
     }
