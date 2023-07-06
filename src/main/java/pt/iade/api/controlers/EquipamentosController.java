@@ -10,9 +10,6 @@ import pt.iade.api.models.Exceptions.Response;
 import pt.iade.api.models.equipamentos;
 import pt.iade.api.models.repositories.EquipamentosRepository;
 
-import pt.iade.api.models.log_equipamento_del;
-import pt.iade.api.models.repositories.Log_equipamento_delRepository;
-
 import java.util.Optional;
 
 
